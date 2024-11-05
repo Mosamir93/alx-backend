@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""A basic Flask app setup."""
+"""
+Flask app
+"""
 from flask import Flask, render_template
 from flask_babel import Babel
 
 
 class Config(object):
-    """Config class that has a LANGUAGES class attribute."""
+    """
+    Configuration for Babel
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -13,12 +17,14 @@ class Config(object):
 
 app = Flask(__name__)
 app.config.from_object(Config)
-Babel = Babel(app)
+babel = Babel(app)
 
 
 @app.route('/', strict_slashes=False)
 def index() -> str:
-    """A / route index."""
+    """
+    Handles / route
+    """
     return render_template('1-index.html')
 
 
